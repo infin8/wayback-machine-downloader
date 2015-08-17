@@ -63,7 +63,8 @@ class WaybackMachineDownloader
       count += 1
       file_url = file_remote_info[:file_url]
       file_id = file_remote_info[:file_id]
-      file_path_elements = file_id.split('/')
+      path = file_id.encode('utf-8', 'binary', :invalid => :replace, :undef => :replace)
+      file_path_elements = path.split('/')
       if file_id == ""
         dir_path = backup_path
         file_path = backup_path + 'index.html'
